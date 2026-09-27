@@ -11,10 +11,12 @@ let nth_prime n =
   is_prime.(1) <- false;
   for p = 2 to int_of_float (sqrt (float limit)) do
     if is_prime.(p)
-    then
-      for i = p * p to limit do
-        if i mod p = 0 then is_prime.(i) <- false
-      done
+    then (
+      let i = ref (p * p) in
+      while !i <= limit do
+        is_prime.(!i) <- false;
+        i := !i + p
+      done)
   done;
   let count = ref 0 in
   let result = ref 0 in
