@@ -13,8 +13,7 @@ let same_digits a b =
   count a = count b
 ;;
 
-let () =
-  let n = 10_000_000 in
+let solve n =
   let phi = Array.init n Fun.id in
   for p = 2 to n - 1 do
     if phi.(p) = p
@@ -34,5 +33,7 @@ let () =
       best := i;
       best_phi := p)
   done;
-  print_int !best
+  !best
 ;;
+
+let run _ = solve 10_000_000 |> string_of_int

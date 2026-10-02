@@ -1,6 +1,8 @@
-let () =
-  List.init 354_000 (fun i -> i + 1)
-  |> List.filter_map (fun n -> if n mod 2 = 0 then None else Some (n * n))
+let solve n =
+  List.init n succ
+  |> List.filter (fun n -> n mod 2 = 1)
+  |> List.map (fun n -> n * n)
   |> List.fold_left ( + ) 0
-  |> print_int
 ;;
+
+let run _ = solve 354_000 |> string_of_int

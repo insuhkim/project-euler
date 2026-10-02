@@ -14,4 +14,5 @@ let comb n m =
   f n m
 ;;
 
-let () = comb 40 20 |> print_int
+let solve n = comb (2 * n) n
+let run _ = solve 20 |> string_of_int

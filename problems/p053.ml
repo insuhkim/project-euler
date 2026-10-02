@@ -1,4 +1,4 @@
-let () =
+let solve () =
   let h = Hashtbl.create 100 in
   let rec comb n k =
     match Hashtbl.find_opt h (n, k) with
@@ -19,5 +19,7 @@ let () =
     in
     loop (k + 1)
   done;
-  print_int !ans
+  !ans
 ;;
+
+let run _ = solve () |> string_of_int

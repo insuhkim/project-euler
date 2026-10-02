@@ -51,7 +51,7 @@ let solve n =
   !ans
 ;;
 
-let () =
+let run _ =
   assert (solve 4 = 120L);
-  solve 500_500 |> Int64.to_string |> print_string
+  solve 500_500 |> Int64.to_string
 ;;

@@ -1,0 +1,12 @@
+(rule
+ (target dispatch.ml)
+ (deps
+  (glob_files problems/p*.ml)
+  gen/main.exe)
+ (action
+  (run %{exe:gen/main.exe} %{target})))
+
+(executable
+ (name main)
+ (modules dispatch main)
+ (libraries problems))

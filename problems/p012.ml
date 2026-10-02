@@ -20,11 +20,17 @@ let num_divisors l =
   |> List.fold_left ( * ) 1
 ;;
 
-let rec loop n =
-  let a, b = if n mod 2 = 0 then n / 2, n + 1 else n, (n + 1) / 2 in
-  let al, bl = factor_list a, factor_list b in
-  let d = List.merge compare al bl |> num_divisors in
-  if d > 500 then a * b else loop (n + 1)
+let solve n =
+  let rec loop i =
+    let a, b = if i mod 2 = 0 then i / 2, i + 1 else i, (i + 1) / 2 in
+    let al, bl = factor_list a, factor_list b in
+    let d = List.merge compare al bl |> num_divisors in
+    if d > n then a * b else loop (i + 1)
+  in
+  loop 1
 ;;
 
-let () = loop 1 |> print_int
+let run _ =
+  assert (solve 5 = 28);
+  solve 500 |> string_of_int
+;;

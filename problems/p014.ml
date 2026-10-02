@@ -11,15 +11,17 @@ let rec collatz_length n =
     length
 ;;
 
-let () =
+let solve n =
   let answer = ref 1 in
   let longest = ref 1 in
-  for n = 1 to 1_000_000 do
-    let length = collatz_length (Int64.of_int n) in
+  for i = 1 to n do
+    let length = collatz_length (Int64.of_int i) in
     if length > !longest
     then (
       longest := length;
-      answer := n)
+      answer := i)
   done;
-  print_int !answer
+  !answer
 ;;
+
+let run _ = solve 1_000_000 |> string_of_int

@@ -1,6 +1,6 @@
 let rec gcd a b = if b = 0 then a else gcd b (a mod b)
 
-let () =
+let solve () =
   let count = Array.make 1001 0 in
   for m = 2 to 22 do
     for n = 1 to m - 1 do
@@ -18,5 +18,6 @@ let () =
   |> Array.mapi (fun n c -> n, c)
   |> Array.fold_left (fun (n', c') (n, c) -> if c' > c then n', c' else n, c) (0, 0)
   |> fst
-  |> print_int
 ;;
+
+let run _ = solve () |> string_of_int

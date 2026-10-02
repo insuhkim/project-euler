@@ -22,7 +22,7 @@ let grid =
   |]
 ;;
 
-let () =
+let solve () =
   let coordinates =
     List.init 20 (fun row -> List.init 20 (fun col -> row, col)) |> List.flatten
   in
@@ -43,6 +43,6 @@ let () =
   |> List.map (List.map (fun (row, col) -> grid.(row).(col)))
   |> List.map (List.fold_left ( * ) 1)
   |> List.fold_left max 0
-  |> print_int
 ;;
 
+let run _ = solve () |> string_of_int

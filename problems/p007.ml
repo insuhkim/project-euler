@@ -29,7 +29,5 @@ let nth_prime n =
   !result
 ;;
 
-let () =
-  assert (nth_prime 6 = 13);
-  nth_prime 10_001 |> print_int
-;;
+let solve = nth_prime
+let run _ = solve 10_001 |> string_of_int

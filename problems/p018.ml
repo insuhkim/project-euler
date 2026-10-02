@@ -28,4 +28,10 @@ let f dp l =
     List.hd dp :: adj dp |> List.map2 ( + ) l)
 ;;
 
-let () = ls |> List.fold_left f [] |> List.fold_left max 0 |> print_int
+let solve ls = ls |> List.fold_left f [] |> List.fold_left max 0
+
+let run _ =
+  let test = [ [ 3 ]; [ 7; 4 ]; [ 2; 4; 6 ]; [ 8; 5; 9; 3 ] ] in
+  assert (solve test = 23);
+  solve ls |> string_of_int
+;;
