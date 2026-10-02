@@ -9,4 +9,4 @@
 (executable
  (name main)
  (modules dispatch main)
- (libraries problems))
+ (libraries problems unix))
