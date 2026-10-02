@@ -5,7 +5,7 @@ Solutions to [Project Euler](https://projecteuler.net/) problems written in OCam
 ## Structure
 
 - `problems/` contains one source file for each solution.
-- Files are named `pNNN.ml`, where `NNN` is the problem number.
+- Files are named `pNNNN.ml`, where `NNNN` is the four-digit problem number.
 - `inputs/` contains input files for problems that require external data.
 - `gen/` contains the code generator for the problem dispatcher.
 - `main.ml` is the command-line entry point.
@@ -48,16 +48,16 @@ Problems that require external input data can have a corresponding file in
 Input files are named:
 
 ```text
-pNNN_<filename>
+pNNNN_<filename>
 ```
 
 For example:
 
 ```text
 inputs/
-├── p022_names.txt
-├── p042_words.txt
-└── p067_triangle.txt
+├── p0022_names.txt
+├── p0042_words.txt
+└── p0067_triangle.txt
 ```
 
 When a problem is run, the program searches `inputs/` for a file beginning with
@@ -104,13 +104,13 @@ The `run` function always returns the answer as a `string`.
 Create a new file in `problems/` using the format:
 
 ```text
-pNNN.ml
+pNNNN.ml
 ```
 
 For example:
 
 ```text
-problems/p015.ml
+problems/p0015.ml
 ```
 
 No manual changes to the dispatcher are required. Dune detects the new

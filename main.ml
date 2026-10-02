@@ -1,5 +1,5 @@
 let find_input problem =
-  let prefix = Printf.sprintf "p%03d_" problem in
+  let prefix = Printf.sprintf "p%04d_" problem in
   Sys.readdir "inputs"
   |> Array.to_list
   |> List.find_opt (String.starts_with ~prefix)
