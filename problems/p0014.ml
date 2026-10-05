@@ -1,21 +1,18 @@
-let ( *! ), ( +! ), ( /! ), ( %! ) = Int64.(mul, add, div, rem)
-let cache = Hashtbl.create 1_000_000
-let collatz_next n = if n %! 2L = 0L then n /! 2L else (3L *! n) +! 1L
-
-let rec collatz_length n =
-  match Hashtbl.find_opt cache n with
-  | Some length -> length
-  | None ->
-    let length = if n = 1L then 1 else collatz_length (collatz_next n) + 1 in
-    Hashtbl.add cache n length;
-    length
-;;
-
 let solve n =
+  let cache = Hashtbl.create 1_000_000 in
+  let collatz_next n = if n mod 2 = 0 then n / 2 else (3 * n) + 1 in
+  let rec collatz_length n =
+    match Hashtbl.find_opt cache n with
+    | Some length -> length
+    | None ->
+      let length = if n = 1 then 1 else collatz_length (collatz_next n) + 1 in
+      Hashtbl.add cache n length;
+      length
+  in
   let answer = ref 1 in
   let longest = ref 1 in
   for i = 1 to n do
-    let length = collatz_length (Int64.of_int i) in
+    let length = collatz_length i in
     if length > !longest
     then (
       longest := length;

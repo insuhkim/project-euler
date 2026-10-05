@@ -44,14 +44,13 @@ let primes n =
 
 let solve n =
   let primes = primes n in
-  let m = 500_500_507L in
-  let ( *! ), ( %! ) = Int64.(mul, rem) in
-  let ans = ref 1L in
-  Array.iter (fun p -> ans := !ans *! Int64.of_int p %! m) primes;
+  let m = 500_500_507 in
+  let ans = ref 1 in
+  Array.iter (fun p -> ans := !ans * p mod m) primes;
   !ans
 ;;
 
 let run _ =
-  assert (solve 4 = 120L);
-  solve 500_500 |> Int64.to_string
+  assert (solve 4 = 120);
+  solve 500_500 |> Int.to_string
 ;;
